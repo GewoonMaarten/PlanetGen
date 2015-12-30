@@ -7,7 +7,7 @@ function loadPlanetMoon()
 
 	planets = {}
 	
-	dist1 , dist2 = 100, 200
+	dist1 , dist2 = 150, 200
 end
 
 function PlanetMoonChar()
