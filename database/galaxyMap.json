@@ -1,0 +1,16 @@
+[{
+	"name" : "galaxy01",
+	"description" : "large galaxy",
+	"systems" : [{
+		"name" : "system01",
+		"description" : "a system with a small sun and 2 planets"
+	},
+	{
+		"name" : "system02",
+		"description" : "a system with two sun's and 1 gas planet"
+	}]
+},
+{
+	"name" : "galaxy02",
+	"description" : "small galaxy"
+}]
