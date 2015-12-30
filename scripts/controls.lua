@@ -1,6 +1,9 @@
+randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
+randomPlanet()
+
 function love.keypressed(key)
 	if key == "escape" then love.event.quit() end
-	if key == "r" then love.graphics.clear() randomSun() randomPlanet() end
+	if key == "r" then love.graphics.clear() randomSun()loadPlanetMoon() PlanetMoonChar()  end
 end
 
 local speed = 2
