@@ -1,15 +1,14 @@
 function loadFiles()
-	local randomSun = love.filesystem.load("/scripts/randomSun.lua")
+	randomSun = love.filesystem.load("/scripts/randomSun.lua")
 	randomSun()
 	
-	local randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
+	randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
 	randomPlanet()
 
-
-	local randomSystem = love.filesystem.load("scripts/randomSystem.lua")
+	randomSystem = love.filesystem.load("scripts/randomSystem.lua")
 	randomSystem()
 
-	local controls = love.filesystem.load("/scripts/controls.lua")
+	controls = love.filesystem.load("/scripts/controls.lua")
 	controls()
 end
 

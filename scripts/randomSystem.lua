@@ -2,6 +2,9 @@ randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
 randomPlanet()
 
 function loadSystem()
+	loadPlanetMoon()
+	PlanetMoonChar()
+	
 	xPosWindow, yPosWindow = love.graphics.getDimensions()
 	
 	centerX, centerY = xPosWindow/2, yPosWindow/2 
