@@ -1,20 +1,23 @@
+local lk = love.keyboard
+
 function loadFiles()
 	randomSun = love.filesystem.load("/scripts/randomSun.lua")
 	randomSun()
 	
 	randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
 	randomPlanet()
-
-	randomSystem = love.filesystem.load("scripts/randomSystem.lua")
-	randomSystem()
-
+	
 	controls = love.filesystem.load("/scripts/controls.lua")
 	controls()
+	
+	randomSystem = love.filesystem.load("scripts/randomSystem.lua")
+	randomSystem()	
 end
 
 function love.load()
 	loadFiles()
 	loadSystem()
+	loadControls()
 end
 
 function love.update(dt)
@@ -23,9 +26,11 @@ function love.update(dt)
 end
 
 function love.draw()
-	drawSystem()
+	cam:draw(drawSystem)
 	love.graphics.setColor(255,255,255)
 	love.graphics.print("Current FPS: "..tostring(love.timer.getFPS()), 10, 10)
-	love.graphics.print(rotationMoon, 100, 90)
-	love.graphics.print(rotationPlanet, 100, 100)
+	love.graphics.print("rotation moon: " .. rotationMoon .. "\nrotation planet: " .. rotationPlanet, 10, 50)
 end
+
+
+

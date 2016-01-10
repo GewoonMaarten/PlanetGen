@@ -1,36 +1,29 @@
-randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
-randomPlanet()
+local lk = love.keyboard
+
+function loadControls()
+	randomPlanet = love.filesystem.load("/scripts/randomPlanet&Moon.lua")
+	randomPlanet()
+	Camera = require "scripts.libs.camera"
+	viewX = 0; viewY = 0; viewZoom = 1
+	cam = Camera(viewX,viewY,viewZoom)
+end
 
 function love.keypressed(key)
 	if key == "escape" then love.event.quit() end
 	if key == "r" then love.graphics.clear() randomSun()loadPlanetMoon() PlanetMoonChar()  end
 end
 
-local speed = 2
-
-function updateControls(dt)
-	if love.keyboard.isDown("w", "up") then yPosSun = yPosSun - speed end
-	if love.keyboard.isDown("s", "down") then yPosSun = yPosSun + speed end
-	
-	if love.keyboard.isDown("d", "right") then xPosSun = xPosSun + speed end
-	if love.keyboard.isDown("a", "left") then xPosSun = xPosSun - speed end
+function love.wheelmoved(x, y)
+	if y > 0 then cam:zoom(2)
+	elseif y < 0 then cam:zoom(0.5) end
 end
 
-function love.mousepressed(x, y, button, istouch)
-	if sunChar.size > 80 and planetChar.size > 10 and moonChar.size > 5 and button == "wu" then
-		sunChar.size = sunChar.size - 80
-		planetChar.size = planetChar.size - 10
-		moonChar.size = moonChar.size - 5
-		distPlanet = distPlanet - (80 - 10)
-		distMoon = distMoon - (10 - 5)
-	elseif button == "wd" then 
-		sunChar.size = sunChar.size + 80
-		planetChar.size = planetChar.size + 10
-		moonChar.size = moonChar.size + 5
-		distPlanet = distPlanet + (80 + 10)
-		distMoon = distMoon + (10 + 5)
-	end
-	--if planetChar.size < 0 and moonChar.size < 0 then
-		--planetChar.size, moonChar.size = 1, 1
-	--end
+function updateControls(dt)
+	local up, down, left, right = lk.isDown("w"), lk.isDown("s"), lk.isDown("a"), lk.isDown("d")
+	
+	if up then cam:move(0, -150*dt)
+	elseif down then cam:move(0, 150*dt) end
+	
+	if left then cam:move(-150*dt, 0)
+	elseif right then cam:move(150*dt, 0) end
 end
